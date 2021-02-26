@@ -19,13 +19,13 @@ public class UserController {
     }
 
     @GetMapping(value = "/user")
-    public String userInfo(@AuthenticationPrincipal User user, ModelMap model){
+    public String userInfo(@AuthenticationPrincipal User user, ModelMap model) {
         model.addAttribute("user", userService.show(user.getId()));
         return "user";
     }
 
     @GetMapping(value = "/user/{id}")
-    public String showUser(@PathVariable("id") long id, ModelMap model){
+    public String showUser(@PathVariable("id") long id, ModelMap model) {
         model.addAttribute("user", userService.show(id));
         return "user";
     }

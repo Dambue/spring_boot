@@ -20,22 +20,22 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column (name = "name")
+    @Column(name = "name")
     //@NotEmpty(message = "Поле обязательно для заполнения")
     //@Size(min = 2, max = 45, message = "Имя пользователя может состоять из 2–45 знаков")
     private String name;
 
-    @Column (name = "last_name")
+    @Column(name = "last_name")
     //@NotEmpty(message = "Поле обязательно для заполнения")
     //@Size(min = 2, max = 45, message = "Фамилия пользователя может состоять из 2–45 знаков")
     private String lastName;
 
-    @Column (name = "age")
+    @Column(name = "age")
     //@NotEmpty(message = "Поле обязательно для заполнения")
     //@Min(value = 0, message = "Вы ввели отрицательное значение")
     private Byte age;
 
-    @Column (name = "password")
+    @Column(name = "password")
     //@NotEmpty(message = "Поле обязательно для заполнения")
     //@Size(min=2, message = "Не меньше 5 знаков")
     private String password;
@@ -43,7 +43,7 @@ public class User implements UserDetails {
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class, cascade = CascadeType.ALL)
     @JoinTable(name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn (name = "role_id"))
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
     public User() {

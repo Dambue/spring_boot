@@ -40,25 +40,26 @@ public class AdminController {
 
     @PostMapping()
     public String creat(@ModelAttribute("user") @Valid User user, BindingResult bindingResult) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             return "new";
         }
         userService.save(user);
         return "redirect:/admin";
     }
+
     @GetMapping("/{id}/edit")
     public String edit(@PathVariable("id") Long id, Model model) {
         model.addAttribute("user", userService.show(id));
         return "edit";
     }
 
-    @PatchMapping ("/{id}")
-    public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult ,
+    @PatchMapping("/{id}")
+    public String update(@ModelAttribute("user") @Valid User user, BindingResult bindingResult,
                          @PathVariable("id") Long id) {
-        if(bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors()) {
             return "edit";
         }
-        userService.update(id,user);
+        userService.update(id, user);
         return "redirect:/admin";
     }
 
