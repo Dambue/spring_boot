@@ -4,9 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.Set;
@@ -21,23 +18,15 @@ public class User implements UserDetails {
     private Long id;
 
     @Column(name = "name")
-    //@NotEmpty(message = "Поле обязательно для заполнения")
-    //@Size(min = 2, max = 45, message = "Имя пользователя может состоять из 2–45 знаков")
     private String name;
 
     @Column(name = "last_name")
-    //@NotEmpty(message = "Поле обязательно для заполнения")
-    //@Size(min = 2, max = 45, message = "Фамилия пользователя может состоять из 2–45 знаков")
     private String lastName;
 
     @Column(name = "age")
-    //@NotEmpty(message = "Поле обязательно для заполнения")
-    //@Min(value = 0, message = "Вы ввели отрицательное значение")
     private Byte age;
 
     @Column(name = "password")
-    //@NotEmpty(message = "Поле обязательно для заполнения")
-    //@Size(min=2, message = "Не меньше 5 знаков")
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Role.class, cascade = CascadeType.ALL)
